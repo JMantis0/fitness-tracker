@@ -153,3 +153,18 @@ toast.addEventListener("animationend", handleToastAnimationEnd);
 document
   .querySelectorAll("input")
   .forEach((element) => element.addEventListener("input", validateInputs));
+
+
+  /*
+
+
+line 116* calls API:  
+All api calls are independent of jquery.
+
+line 24 calls API
+
+
+
+
+
+  */
