@@ -2,9 +2,6 @@ const Workout = require("../models/workoutModel");
 const db = require("../models");
 
 module.exports = function (app) {
-  // html routes
- 
-
   //  Api routes
   app.get("/api/workouts", (req, res) => {
     //  Get all workouts from the mongodb

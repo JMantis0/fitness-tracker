@@ -8,7 +8,7 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeders/seed.js",
-    "eslint": "eslint **/*.js --fix --ignore-pattern node_modules/"
+    "eslint": "./node_modules/.bin/eslint"
   },
   "author": "",
   "license": "ISC",
