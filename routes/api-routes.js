@@ -30,7 +30,7 @@ module.exports = function (app) {
         console.log(error);
         res.status(500).json(error);
       });
-  })
+  });
 
   app.post("/api/workouts", (req, res) => {
     // const workoutExists = Object.keys(req.body).length > 0;
