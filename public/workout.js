@@ -4,15 +4,17 @@ async function initWorkout() {
   if (lastWorkout) {
     document
       .querySelector("a[href='/exercise?']")
+      //  Assign new href to New Workout button
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
+      //  lastWorkout.totalDuration does not exists.  What needs to be fixed?
       totalDuration: lastWorkout.totalDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
-
+    console.log(workoutSummary, "workoutSummary workout.js line 16")
     renderWorkoutSummary(workoutSummary);
   } else {
     renderNoWorkoutText();
@@ -20,6 +22,7 @@ async function initWorkout() {
 }
 
 function tallyExercises(exercises) {
+  console.log(exercises, "exercises workout.js line 24")
   const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
@@ -45,6 +48,7 @@ function formatDate(date) {
 }
 
 function renderWorkoutSummary(summary) {
+  console.log(summary, "summary workout.js line 49");
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {

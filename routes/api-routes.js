@@ -5,10 +5,8 @@ module.exports = function (app) {
   //  Api routes
   app.get("/api/workouts", (req, res) => {
     //  Get all workouts from the mongodb
-    console.log("inside api-routes line 22");
     db.Workout.find()
       .then((workouts) => {
-        console.log(workouts, "api-routes 25")
         res.status(200).send(workouts);
       })
       .catch((error) => {
@@ -20,7 +18,7 @@ module.exports = function (app) {
   app.get("/api/workouts/range", (req, res) => {
     db.Workout.find()
       .then((workouts) => {
-        console.log(workouts, "api-routes 37")
+        console.log(workouts, "api-routes 23")
         res.status(200).send(workouts);
       })
       .catch((error) => {
