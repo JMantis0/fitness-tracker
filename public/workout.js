@@ -7,10 +7,15 @@ async function initWorkout() {
       //  Assign new href to New Workout button
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
+    //  Assign total time for all exercises of the workout to totDuration
+    let totDuration = 0;
+    lastWorkout.exercises.forEach((exercise) => {
+      totDuration += exercise.duration;
+    });
+
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      //  lastWorkout.totalDuration does not exists.  What needs to be fixed?
-      totalDuration: lastWorkout.totalDuration,
+      totalDuration: totDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
