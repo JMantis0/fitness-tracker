@@ -53,7 +53,7 @@ function formatDate(date) {
 }
 
 function renderWorkoutSummary(summary) {
-  console.log(summary, "summary workout.js line 49");
+  console.log(summary, "summary workout.js line 56");
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {

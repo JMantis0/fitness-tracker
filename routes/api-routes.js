@@ -1,11 +1,12 @@
+const mongo = require("mongodb");
 const Workout = require("../models/workoutModel");
-const db = require("../models");
+
 
 module.exports = function (app) {
   //  Api routes
   app.get("/api/workouts", (req, res) => {
     //  Get all workouts from the mongodb
-    db.Workout.find()
+    Workout.find()
       .then((workouts) => {
         res.status(200).send(workouts);
       })
@@ -16,9 +17,8 @@ module.exports = function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find()
+    Workout.find()
       .then((workouts) => {
-        console.log(workouts, "api-routes 23")
         res.status(200).send(workouts);
       })
       .catch((error) => {
@@ -45,7 +45,21 @@ module.exports = function (app) {
     // });
   });
 
-  app.post("/api/workouts/:id", (req, res) => {
-    const workoutData = JSON.parse(req.body);
+  app.put("/api/workouts/:id", (req, res) => {
+    const newExercise = req.body;
+    console.log(newExercise);
+    // db.Workout.find({ _id: req.params.id })
+    //   .then((result) => console.log(result, "53"))
+    //   .catch((error) => console.log(error));
+    Workout.updateOne(
+      { _id: req.params.id },
+      { $push: { exercises: newExercise } }
+    )
+      .then((workout) => {
+        res.status(200).json(workout);
+      })
+      .catch((error) => {
+        res.status(404).json(error);
+      });
   });
 };
