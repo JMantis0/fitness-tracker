@@ -55,11 +55,12 @@ module.exports = function (app) {
       { _id: req.params.id },
       { $push: { exercises: newExercise } }
     )
-      .then((workout) => {
-        res.status(200).json(workout);
+      .then(() => {
+        res.sendStatus(202);
       })
       .catch((error) => {
-        res.status(404).json(error);
+        console.log(error, "line 62");
+        res.status(404).send(error);
       });
   });
 };
