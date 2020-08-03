@@ -1,15 +1,35 @@
 // get all workout data from back-end
-
+let testData;
+const dayMapper = {
+  0: "Sunday",
+  1: "Monday",
+  2: "Tuesday",
+  3: "Wednesday",
+  4: "Thursday",
+  5: "Friday",
+  6: "Saturday"
+};
+const dayLabels = []
+for (let i=0;i < 7;i++) {
+  let today = new Date();
+  today.setDate(today.getDate() - i)
+  let label = `${dayMapper[today.getDay()]} ${today.getMonth()}/${today.getDate()}`
+  dayLabels.unshift(label)
+}
+const today = new Date();
 fetch("/api/workouts/range")
   .then((response) => {
     return response.json();
   })
   .then((data) => {
+    testData = data;
     populateChart(data);
     console.log(data, "stats.js line 9");
   });
 
 API.getWorkoutsInRange();
+
+console.log(today);
 
 function generatePalette() {
   const arr = [
@@ -47,15 +67,7 @@ function populateChart(data) {
   const lineChart = new Chart(line, {
     type: "line",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
+      labels: dayLabels,
       datasets: [
         {
           label: "Workout Duration In Minutes",
@@ -95,15 +107,7 @@ function populateChart(data) {
   const barChart = new Chart(bar, {
     type: "bar",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
+      labels: dayLabels,
       datasets: [
         {
           label: "Pounds",
