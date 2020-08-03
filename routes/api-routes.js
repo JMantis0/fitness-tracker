@@ -1,10 +1,10 @@
-import { find, create, updateOne } from "../models/workoutModel";
-
-export default function (app) {
+const Workout = require("../models/workoutModel");
+const db = require("../models");
+module.exports = function (app) {
   //  Api routes
   app.get("/api/workouts", (req, res) => {
     //  Get all workouts from the mongodb
-    find()
+    db.Workout.find()
       .then((workouts) => {
         res.status(200).send(workouts);
       })
@@ -15,7 +15,7 @@ export default function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    find()
+    db.Workout.find()
       .then((workouts) => {
         res.status(200).send(workouts);
       })
@@ -26,7 +26,7 @@ export default function (app) {
   });
 
   app.post("/api/workouts", (req, res) => {
-    create(req.body)
+    db.Workout.create(req.body)
       .then((newWorkout) => {
         res.status(202).json(newWorkout);
       })
@@ -38,7 +38,10 @@ export default function (app) {
 
   app.put("/api/workouts/:id", (req, res) => {
     const newExercise = req.body;
-    updateOne({ _id: req.params.id }, { $push: { exercises: newExercise } })
+    db.Workout.updateOne(
+      { _id: req.params.id },
+      { $push: { exercises: newExercise } }
+    )
       .then(() => {
         res.sendStatus(202);
       })
@@ -46,4 +49,4 @@ export default function (app) {
         res.status(404).send(error);
       });
   });
-}
+};
