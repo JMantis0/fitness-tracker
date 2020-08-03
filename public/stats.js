@@ -1,28 +1,9 @@
 // get all workout data from back-end
-let testData;
-const dayMapper = {
-  0: "Sunday",
-  1: "Monday",
-  2: "Tuesday",
-  3: "Wednesday",
-  4: "Thursday",
-  5: "Friday",
-  6: "Saturday"
-};
-const dayLabels = []
-for (let i=0;i < 7;i++) {
-  let today = new Date();
-  today.setDate(today.getDate() - i)
-  let label = `${dayMapper[today.getDay()]} ${today.getMonth()}/${today.getDate()}`
-  dayLabels.unshift(label)
-}
-const today = new Date();
 fetch("/api/workouts/range")
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    testData = data;
     populateChart(data);
   });
 
@@ -51,6 +32,7 @@ function generatePalette() {
   return arr;
 }
 function populateChart(data) {
+  const chartLabels = setLabels(data);
   const durations = duration(data);
   const pounds = calculateTotalWeight(data);
   const workouts = workoutNames(data);
@@ -64,7 +46,7 @@ function populateChart(data) {
   const lineChart = new Chart(line, {
     type: "line",
     data: {
-      labels: dayLabels,
+      labels: chartLabels,
 
       datasets: [
         {
@@ -105,7 +87,7 @@ function populateChart(data) {
   const barChart = new Chart(bar, {
     type: "bar",
     data: {
-      labels: dayLabels,
+      labels: chartLabels,
       datasets: [
         {
           label: "Pounds",
@@ -188,6 +170,25 @@ function populateChart(data) {
   });
 }
 
+function setLabels(data) {
+  const labels = [];
+  console.log(data, "inside setlabels");
+  data.forEach((workout) => {
+    labels.unshift(formatDate(workout.day));
+  });
+  return labels;
+}
+
+function formatDate(date) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  };
+
+  return new Date(date).toLocaleDateString(options);
+}
 function duration(data) {
   const durations = [];
   data.forEach((workout) => {
@@ -195,7 +196,7 @@ function duration(data) {
     workout.exercises.forEach((exercise) => {
       totalWorkoutDuration += exercise.duration;
     });
-    durations.push(totalWorkoutDuration);
+    durations.unshift(totalWorkoutDuration);
   });
 
   return durations;
@@ -205,9 +206,11 @@ function calculateTotalWeight(data) {
   const total = [];
 
   data.forEach((workout) => {
+    let totalWorkoutWeight = 0;
     workout.exercises.forEach((exercise) => {
-      total.push(exercise.weight);
+      totalWorkoutWeight += exercise.weight;
     });
+    total.unshift(totalWorkoutWeight);
   });
 
   return total;

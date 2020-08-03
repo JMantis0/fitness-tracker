@@ -15,8 +15,12 @@ module.exports = function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({})
+    db.Workout.find().limit(7)
+      .sort({
+        day: -1
+      })
       .then((workouts) => {
+        console.log(workouts, "line 23 api-routes")
         res.status(200).send(workouts);
       })
       .catch((error) => {
