@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = function (app) {
   //  Api routes
   app.get("/api/workouts", (req, res) => {
+    
     //  Get all workouts from the mongodb
     db.Workout.find()
       .then((workouts) => {
@@ -20,7 +21,6 @@ module.exports = function (app) {
         day: -1
       })
       .then((workouts) => {
-        console.log(workouts, "line 23 api-routes")
         res.status(200).send(workouts);
       })
       .catch((error) => {
