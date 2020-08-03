@@ -11,16 +11,11 @@ const API = {
   },
   async addExercise(data) {
     const id = location.search.split("=")[1];
-
-    const res = await fetch("/api/workouts/" + id, {
+    await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-
-    const json = await res.json();
-
-    return json;
   },
   async createWorkout(data = {}) {
     const res = await fetch("/api/workouts", {

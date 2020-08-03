@@ -4,15 +4,22 @@ async function initWorkout() {
   if (lastWorkout) {
     document
       .querySelector("a[href='/exercise?']")
+      //  Assign new href to New Workout button
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
+
+    //  Assign total time for all exercises of the workout to totDuration
+    let totDuration = 0;
+    lastWorkout.exercises.forEach((exercise) => {
+      totDuration += exercise.duration;
+    });
 
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      totalDuration: lastWorkout.totalDuration,
+      totalDuration: totDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
-
+    console.log(workoutSummary, "workoutSummary workout.js line 16")
     renderWorkoutSummary(workoutSummary);
   } else {
     renderNoWorkoutText();
@@ -20,6 +27,7 @@ async function initWorkout() {
 }
 
 function tallyExercises(exercises) {
+  console.log(exercises, "expecting a cardio in here");
   const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
@@ -30,6 +38,7 @@ function tallyExercises(exercises) {
     }
     return acc;
   }, {});
+  //The above empty object is rude.
   return tallied;
 }
 
@@ -45,6 +54,7 @@ function formatDate(date) {
 }
 
 function renderWorkoutSummary(summary) {
+  console.log(summary, "summary workout.js line 56");
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {
