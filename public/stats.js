@@ -24,12 +24,9 @@ fetch("/api/workouts/range")
   .then((data) => {
     testData = data;
     populateChart(data);
-    console.log(data, "stats.js line 9");
   });
 
 API.getWorkoutsInRange();
-
-console.log(today);
 
 function generatePalette() {
   const arr = [
@@ -68,6 +65,7 @@ function populateChart(data) {
     type: "line",
     data: {
       labels: dayLabels,
+
       datasets: [
         {
           label: "Workout Duration In Minutes",
@@ -192,11 +190,12 @@ function populateChart(data) {
 
 function duration(data) {
   const durations = [];
-
   data.forEach((workout) => {
+    let totalWorkoutDuration = 0;
     workout.exercises.forEach((exercise) => {
-      durations.push(exercise.duration);
+      totalWorkoutDuration += exercise.duration;
     });
+    durations.push(totalWorkoutDuration);
   });
 
   return durations;

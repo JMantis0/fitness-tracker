@@ -15,7 +15,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find()
+    db.Workout.find({})
       .then((workouts) => {
         res.status(200).send(workouts);
       })
