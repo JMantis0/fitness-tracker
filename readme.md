@@ -21,7 +21,7 @@ Complete the workout:  Click the blue button.
 
 View your workout data by clicking the Dashboard link in the header.
 
-![dash](./public/images/dsh.JPG)
+![dash](./public/images/dash.JPG)
 
 ## Concepts within
 
