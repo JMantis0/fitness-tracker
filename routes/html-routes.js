@@ -4,14 +4,14 @@ const db = require("../models");
 
 module.exports = function (app) {
   app.get("/exercise", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "../public/exercise.html"));
+    res.status(200).sendFile(path.join(__dirname, "../public/html/exercise.html"));
   });
 
   app.get("/", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "../public/index.html"));
+    res.status(200).sendFile(path.join(__dirname, "../public/html/index.html"));
   });
 
   app.get("/stats", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "../public/stats.html"));
+    res.status(200).sendFile(path.join(__dirname, "../public/html/stats.html"));
   });
 };

@@ -1,46 +1,45 @@
-# [Eat-Da-Burger](https://secret-scrubland-53219.herokuapp.com/)
-![GitHub repo size](https://img.shields.io/github/repo-size/JMantis0/Eat-Da-Burger)  ![GitHub language count](https://img.shields.io/github/languages/count/JMantis0/Eat-Da-Burger)  ![GitHub top language](https://img.shields.io/github/languages/top/JMantis0/Eat-Da-Burger)  [![time tracker](https://wakatime.com/badge/github/JMantis0/Eat-Da-Burger.svg)](https://wakatime.com/badge/github/JMantis0/Eat-Da-Burger)
-
+# [fitness-tracker](https://secret-scrubland-53219.herokuapp.com/)
+![GitHub repo size](https://img.shields.io/github/repo-size/JMantis0/fitness-tracker)  ![GitHub language count](https://img.shields.io/github/languages/count/JMantis0/fitness-tracker)  ![GitHub top language](https://img.shields.io/github/languages/top/JMantis0/fitness-tracker)  
 
 
 ## Getting Started
 
-This web application allows a user to record workout exercises theyve performed and track their workout data graphically.
+This web application allows a user to record workout exercises they've performed and track their workout data graphically.
 
 
 ## Installation
 
-Visit the [web site](https://secret-scrubland-53219.herokuapp.com/)
+Visit the [web site](https://fathomless-sands-66286.herokuapp.com/)
 
 ## Usage
 
-Create a burger you'd like to 'devour' by typing its name into the Burger Name input then clicking on 'Add Burger' (or pressing the enter key).
-The burger will appear in the Burgers section.
-'Devour' the burger by clicking its respective 'Devour' button.
+Create a new workout:  On the home page click the green button.
+Add exercise to workout:  Select exercise type and enter the details of the exercise.  Then click the green button.
+Complete the workout:  Click the blue button.
 
-![usingtheapp](./public/assets/images/burger.gif)
+~[home](./public/images/home.JPG)
+
+View your workout data by clicking the Dashboard link in the header.
+
+~[dash](./public/images/dsh.JPG)
 
 ## Concepts within
 
-- MySQL
+- MongoDB
+- Mongoose
+- Chart.js
 - express
-- express-handlebars
-- MVC (Model View Controller) Design Structure
-- Mobile First Design
-- Bootstrap Framework
 - Javascript
 - jQuery
-- HTML.
 
 ## Credits
 
-- [font awesome](https://fontawesome.com/)
-- [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+
 - [Trilogy](https://www.trilogyed.com/)
 - [npm express](https://www.npmjs.com/package/express)
-- [npm express-handlebars](https://www.npmjs.com/package/express-handlebars)
-- [MySQL](https://www.mysql.com/)
-- [Vecteezy](https://www.vecteezy.com/)
+- [Chart.js](https://www.chartjs.org/)
+- [MongoDB0](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
 - [jQuery](https://jquery.com/)
 
 ## License
