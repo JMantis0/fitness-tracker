@@ -17,11 +17,11 @@ Create a new workout:  On the home page click the green button.
 Add exercise to workout:  Select exercise type and enter the details of the exercise.  Then click the green button.
 Complete the workout:  Click the blue button.
 
-~[home](./public/images/home.JPG)
+![home](./public/images/home.JPG)
 
 View your workout data by clicking the Dashboard link in the header.
 
-~[dash](./public/images/dsh.JPG)
+![dash](./public/images/dsh.JPG)
 
 ## Concepts within
 
