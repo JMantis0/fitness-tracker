@@ -173,7 +173,7 @@ function populateChart(data) {
 function setLabels(data) {
   const labels = [];
   data.forEach((workout) => {
-    labels.unshift(formatDate(workout.day));
+    labels.push(formatDate(workout.day));
   });
   return labels;
 }
