@@ -16,12 +16,13 @@ module.exports = function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find().limit(7)
-      .sort({
-        day: -1
-      })
-      .then((workouts) => {
-        res.status(200).send(workouts);
+    db.Workout.find()
+      .then((workouts) => { 
+        //  Set up a slice to get no more than 7 workouts
+        let sliceIndex;
+        (workouts.length > 7) ? sliceIndex = workouts.length - 7 : sliceIndex = 0;
+        let sevenDaySlice = workouts.slice(sliceIndex);
+        res.status(200).send(sevenDaySlice);
       })
       .catch((error) => {
         console.log(error);
