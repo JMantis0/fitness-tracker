@@ -1,4 +1,4 @@
-# [fitness-tracker](https://secret-scrubland-53219.herokuapp.com/)
+# [fitness-tracker](https://fathomless-sands-66286.herokuapp.com/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/JMantis0/fitness-tracker)  ![GitHub language count](https://img.shields.io/github/languages/count/JMantis0/fitness-tracker)  ![GitHub top language](https://img.shields.io/github/languages/top/JMantis0/fitness-tracker)  
 
 
