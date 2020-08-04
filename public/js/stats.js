@@ -172,7 +172,6 @@ function populateChart(data) {
 
 function setLabels(data) {
   const labels = [];
-  console.log(data, "inside setlabels");
   data.forEach((workout) => {
     labels.unshift(formatDate(workout.day));
   });
@@ -196,7 +195,7 @@ function duration(data) {
     workout.exercises.forEach((exercise) => {
       totalWorkoutDuration += exercise.duration;
     });
-    durations.unshift(totalWorkoutDuration);
+    durations.push(totalWorkoutDuration);
   });
 
   return durations;
@@ -210,7 +209,7 @@ function calculateTotalWeight(data) {
     workout.exercises.forEach((exercise) => {
       totalWorkoutWeight += exercise.weight;
     });
-    total.unshift(totalWorkoutWeight);
+    total.push(totalWorkoutWeight);
   });
 
   return total;
